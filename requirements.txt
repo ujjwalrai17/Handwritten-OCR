@@ -1,0 +1,26 @@
+# Core ML
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.35.0
+accelerate>=0.24.0
+datasets>=2.14.0
+sentencepiece>=0.1.99
+
+# Image Processing
+opencv-python>=4.8.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Text Detection
+craft-text-detector>=0.4.2
+
+# Post Processing
+symspellpy>=6.7.7
+reportlab>=4.0.0
+
+# PDF Input Support
+pdf2image>=1.16.3
+
+# Utilities
+tqdm>=4.66.0
+pytest>=7.4.0
