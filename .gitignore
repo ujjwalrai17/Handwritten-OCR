@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Model cache & checkpoints
+checkpoints/
+models/
+~/.cache/huggingface/
+
+# Outputs
+outputs/results/
+outputs/pdfs/
+logs/
+
+# Data (large files)
+data/raw/
+data/processed/
+data/samples/*.jpg
+data/samples/*.jpeg
+data/samples/*.png
+data/samples/*.tiff
+data/samples/*.bmp
+!data/samples/sample.png
+
+# Debug artifacts
+data/samples/debug_*.png
+
+# PDF input files
+*.pdf
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Environment variables
+.env
