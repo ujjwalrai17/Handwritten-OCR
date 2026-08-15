@@ -105,7 +105,7 @@ def save_pdf(doc, output_path: Path = None) -> Path:
 
 def print_results(doc):
     """Pretty-print results to terminal."""
-    sep = "─" * 60
+    sep = "-" * 60
     print(f"\n{sep}")
     print(f"  SOURCE     : {doc.source_path or 'stdin'}")
     print(f"  LINES      : {len(doc.lines)}")
@@ -113,6 +113,6 @@ def print_results(doc):
           f"({doc.low_confidence_count} low-confidence lines)")
     print(sep)
     for i, ln in enumerate(doc.lines, 1):
-        flag = " ⚠" if ln.is_low_confidence else ""
+        flag = " [LOW]" if ln.is_low_confidence else ""
         print(f"  [{i:02d}] ({ln.confidence:.0%}){flag}  {ln.corrected_text}")
     print(sep + "\n")

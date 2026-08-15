@@ -85,10 +85,19 @@ def _clean_ocr_noise(text: str) -> str:
 
 
 def correct_text(text: str) -> str:
+    """Spell-correct text, preserving [illegible] placeholders intact."""
     if not C.spell_correction:
         return _clean_ocr_noise(text)
-    cleaned = _clean_ocr_noise(text)
-    return " ".join(_correct_word(w) for w in cleaned.split())
+    # Split on [illegible] spans, only correct the non-placeholder parts
+    parts = re.split(r"(\[illegible[^\]]*\])", text)
+    corrected_parts = []
+    for part in parts:
+        if part.startswith("[") and part.endswith("]"):
+            corrected_parts.append(part)  # preserve placeholder verbatim
+        else:
+            cleaned = _clean_ocr_noise(part)
+            corrected_parts.append(" ".join(_correct_word(w) for w in cleaned.split()))
+    return " ".join(p for p in corrected_parts if p).strip()
 
 
 # ── Data Structures ───────────────────────────────────────────────────────────
@@ -99,6 +108,8 @@ class ProcessedLine:
     corrected_text: str
     confidence: float
     is_low_confidence: bool
+    needs_review: bool = False           # True when cross-check flags disagreement
+    difficulty_tag: str = "clean"        # "clean" | "hard" from detector
     token_confidences: list[float] = field(default_factory=list)
 
 
@@ -147,6 +158,8 @@ def postprocess(line_results: list[LineResult], source_path: str = "") -> Docume
             corrected_text=corrected,
             confidence=r.confidence,
             is_low_confidence=r.confidence < C.confidence_threshold,
+            needs_review=r.needs_review,
+            difficulty_tag=r.difficulty_tag,
             token_confidences=r.token_confidences,
         ))
     log.debug("Postprocessed %d lines (%.1f%% low-confidence)",
