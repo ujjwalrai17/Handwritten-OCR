@@ -52,6 +52,10 @@ def parse_args():
     # ── Model ─────────────────────────────────────────────────────────────────
     parser.add_argument("--model", type=str, default=None,
                         help="Path to fine-tuned checkpoint (default: HuggingFace pretrained)")
+    parser.add_argument("--normalize-strokes", action="store_true",
+                        help="Enable stroke-width normalization (slower, helps with overlapping cursive)")
+    parser.add_argument("--ensemble", choices=["trocr_only", "crnn_only", "confidence"],
+                        default=None, help="Override ensemble blend mode")
 
     return parser.parse_args()
 
@@ -61,7 +65,8 @@ def _load_ground_truth(path: str) -> list[str]:
 
 
 def _handle_single(args):
-    doc, elapsed = run(args.image, source_path=args.image)
+    doc, elapsed = run(args.image, source_path=args.image,
+                       normalize_strokes=args.normalize_strokes)
     print_results(doc)
 
     if args.save_txt:
@@ -77,10 +82,14 @@ def _handle_single(args):
             sys.exit(1)
         refs = _load_ground_truth(args.ground_truth)
         preds = [ln.corrected_text for ln in doc.lines]
-        metrics = evaluate(preds, refs, inference_time_sec=elapsed)
-        print("\n── Evaluation Results ──────────────────────────")
+        tags  = [ln.difficulty_tag for ln in doc.lines]
+        flags = [ln.needs_review for ln in doc.lines]
+        metrics = evaluate(preds, refs, inference_time_sec=elapsed,
+                           difficulty_tags=tags, needs_review_flags=flags)
+        print("\n-- Evaluation Results ------------------------------------------")
         print(metrics)
-        save_evaluation_report(preds, refs, metrics)
+        save_evaluation_report(preds, refs, metrics,
+                               difficulty_tags=tags, needs_review_flags=flags)
 
 
 def _handle_folder(args):
@@ -127,6 +136,10 @@ def main():
     if args.model:
         cfg.model.name = args.model
         log.info("Using model checkpoint: %s", args.model)
+
+    if args.ensemble:
+        cfg.ensemble.blend_mode = args.ensemble
+        log.info("Ensemble mode: %s", args.ensemble)
 
     if args.image:
         _handle_single(args)

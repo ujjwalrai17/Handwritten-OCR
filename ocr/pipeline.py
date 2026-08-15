@@ -17,13 +17,15 @@ from ocr.utils.logger import get_logger
 log = get_logger(__name__)
 
 
-def run(source, source_path: str = "") -> tuple[DocumentResult, float]:
+def run(source, source_path: str = "", normalize_strokes: bool = False) -> tuple[DocumentResult, float]:
     """
     Run the full OCR pipeline on a single image.
 
     Args:
-        source:      str (file path) or PIL.Image
-        source_path: display label for output (original filename)
+        source:            str (file path) or PIL.Image
+        source_path:       display label for output (original filename)
+        normalize_strokes: enable stroke-width normalization (slower, helps
+                           with variable-width cursive and overlapping strokes)
 
     Returns:
         (DocumentResult, inference_time_seconds)
@@ -31,7 +33,7 @@ def run(source, source_path: str = "") -> tuple[DocumentResult, float]:
     t0 = time.perf_counter()
 
     try:
-        binary, bgr = preprocess(source)
+        binary, bgr = preprocess(source, normalize_strokes=normalize_strokes)
     except PreprocessingError as e:
         log.error("Preprocessing failed: %s", e)
         return DocumentResult(source_path=source_path), 0.0
@@ -42,7 +44,9 @@ def run(source, source_path: str = "") -> tuple[DocumentResult, float]:
         return DocumentResult(source_path=source_path), 0.0
 
     engine = get_engine()
-    line_results = engine.run_batch([ln.crop for ln in lines])
+    difficulty_tags = [ln.difficulty_tag for ln in lines]
+    line_results = engine.run_batch([ln.crop for ln in lines],
+                                    difficulty_tags=difficulty_tags)
 
     doc = postprocess(line_results, source_path=source_path)
 
