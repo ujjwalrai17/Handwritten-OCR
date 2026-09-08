@@ -108,9 +108,10 @@ class ProcessedLine:
     corrected_text: str
     confidence: float
     is_low_confidence: bool
-    needs_review: bool = False           # True when cross-check flags disagreement
-    difficulty_tag: str = "clean"        # "clean" | "hard" from detector
+    needs_review: bool = False
+    difficulty_tag: str = "clean"
     token_confidences: list[float] = field(default_factory=list)
+    word_confidences: list = field(default_factory=list)  # list[WordConfidence]
 
 
 @dataclass
@@ -161,6 +162,7 @@ def postprocess(line_results: list[LineResult], source_path: str = "") -> Docume
             needs_review=r.needs_review,
             difficulty_tag=r.difficulty_tag,
             token_confidences=r.token_confidences,
+            word_confidences=r.word_confidences,
         ))
     log.debug("Postprocessed %d lines (%.1f%% low-confidence)",
               len(doc.lines),

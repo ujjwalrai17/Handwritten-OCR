@@ -1,0 +1,14 @@
+[illegible] 56
+Machine learning is a method of data analysis that auto rates
+analytical model building . It is a branch of artificial intelligence
+based on the idea that systems can learn from data , identify
+pattern and make decisions with minimal human intervention
+Machine learning algorithms build a mathematical model based , on
+example data , known as " training data , in order to make predictions
+an decisions without being explicitly programmed to perform the task
+Machine learning is widely used in many fields , including computer
+vision , natural language processing , speech recognition , email filtering ,
+recommendation systems , fraud detection , and many more
+Some common types of machine learning are supervised learning
+comp era used learning , and reinforcement learning
+it continues to be one of the most exciting fields in technology today

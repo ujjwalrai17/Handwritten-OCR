@@ -1,0 +1,162 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,1955,0.0711,True,0.3961,True,False,[illegible] 56
+1,2,56,0.4461,False,0.3961,True,False,[illegible] 56
+2,1,Machine,0.9781,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,2,learning,0.9992,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,3,is,1.0000,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,4,a,1.0000,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,5,method,1.0000,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,6,of,1.0000,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,7,data,0.9993,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,8,analysis,0.9999,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,9,that,1.0000,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,10,automates,0.9648,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+2,11,...,0.7938,False,0.9388,False,False,Machine learning is a method of data analysis that auto rates
+3,1,"""",0.4559,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,2,analytical,0.9995,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,3,model,0.9956,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,4,building,0.9954,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,5,.,0.9999,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,6,It,1.0000,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,7,is,1.0000,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,8,a,1.0000,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,9,branch,0.9994,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,10,of,1.0000,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,11,artificial,0.9995,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,12,intelligence,0.9997,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+3,13,...,0.8627,False,0.9355,False,False,analytical model building . It is a branch of artificial intelligence
+4,1,"""",0.6223,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,2,based,0.9620,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,3,on,1.0000,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,4,the,0.9998,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,5,idea,1.0000,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,6,that,1.0000,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,7,systems,0.9602,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,8,can,1.0000,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,9,learn,0.9999,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,10,from,1.0000,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,11,data,0.9986,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,12,",",0.9983,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,13,identify,0.9810,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+4,14,...,0.7672,False,0.9371,False,False,"based on the idea that systems can learn from data , identify"
+5,1,pattern,0.3960,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,2,and,0.6760,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,3,make,0.9999,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,4,decisions,0.9987,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,5,with,1.0000,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,6,minimal,0.9988,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,7,human,1.0000,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,8,intervention,0.9997,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,9,...,0.7385,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+5,10,.,0.6928,False,0.7911,False,False,pattern and make decisions with minimal human intervention
+6,1,"""",0.6088,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,2,Machine,0.7192,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,3,learning,0.9953,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,4,algorithms,0.9991,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,5,build,0.9857,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,6,a,1.0000,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,7,mathematical,0.9991,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,8,model,0.9974,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,9,based,1.0000,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,10,",",0.7167,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+6,11,on,0.6695,False,0.8149,False,False,"Machine learning algorithms build a mathematical model based , on"
+7,1,example,0.7912,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,2,data,0.9999,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,3,",",0.9993,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,4,known,0.9993,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,5,as,1.0000,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,6,"""",0.8625,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,7,training,0.9982,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,8,data,0.9880,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,9,",",0.8079,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,10,in,0.9582,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,11,order,0.9999,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,12,to,1.0000,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,13,make,1.0000,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,14,predictions,0.9992,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+7,15,...,0.5975,False,0.9124,False,False,"example data , known as "" training data , in order to make predictions"
+8,1,#,0.5101,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,2,an,0.4540,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,3,decisions,0.9999,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,4,without,0.9986,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,5,being,1.0000,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,6,explicitly,0.9624,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,7,programmed,0.9986,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,8,to,1.0000,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,9,perform,0.9999,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,10,the,1.0000,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,11,task,0.9984,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,12,...,0.8329,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+8,13,.,0.8689,False,0.8894,False,False,an decisions without being explicitly programmed to perform the task
+9,1,"""",0.5273,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,2,Machine,0.7866,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,3,learning,0.9928,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,4,is,1.0000,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,5,widely,0.9998,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,6,used,1.0000,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,7,in,0.9999,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,8,many,1.0000,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,9,fields,0.9999,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,10,",",0.9995,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,11,including,0.9997,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,12,computer,0.9949,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+9,13,...,0.7075,False,0.9082,False,False,"Machine learning is widely used in many fields , including computer"
+10,1,"""",0.5733,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,2,vision,0.4830,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,3,",",0.9939,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,4,natural,0.9835,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,5,language,0.9945,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,6,processing,0.9970,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,7,",",0.7161,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,8,speech,0.9999,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,9,recognition,0.9988,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,10,",",0.7976,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,11,email,0.9990,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,12,filtering,0.9971,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+10,13,",",0.5099,False,0.8252,False,False,"vision , natural language processing , speech recognition , email filtering ,"
+11,1,"""",0.2682,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,2,recommendation,0.8835,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,3,systems,0.9985,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,4,",",0.9966,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,5,fraud,0.9789,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,6,detection,0.9871,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,7,",",0.9811,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,8,and,1.0000,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,9,many,0.9999,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,10,more,1.0000,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,11,...,0.6974,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+11,12,.,0.4440,False,0.7945,False,False,"recommendation systems , fraud detection , and many more"
+12,1,"""",0.5055,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,2,Some,0.9995,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,3,common,0.9982,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,4,types,0.9997,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,5,of,1.0000,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,6,machine,0.9999,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,7,learning,0.4639,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,8,are,0.9997,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,9,supervised,0.9991,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,10,learning,0.9851,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,11,...,0.4608,False,0.8656,False,False,Some common types of machine learning are supervised learning
+12,12,.,0.9024,False,0.8656,False,False,Some common types of machine learning are supervised learning
+13,1,compervised,0.5766,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,2,learning,0.8652,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,3,",",0.9108,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,4,and,1.0000,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,5,reinforcement,0.9985,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,6,learning,0.7030,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+13,7,.,0.5364,False,0.6562,True,False,"comp era used learning , and reinforcement learning"
+14,1,#,0.8965,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,2,it,0.7098,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,3,continues,0.9999,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,4,to,0.9999,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,5,be,1.0000,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,6,one,0.9996,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,7,of,1.0000,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,8,the,0.9996,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,9,most,1.0000,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,10,exciting,0.9998,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,11,fields,0.9999,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,12,in,0.9998,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,13,technology,0.9996,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,14,today,0.9997,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today
+14,15,.,0.5795,False,0.9227,False,False,it continues to be one of the most exciting fields in technology today

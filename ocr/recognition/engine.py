@@ -49,12 +49,28 @@ ILLEGIBLE_LINE  = "[illegible line]"
 
 
 @dataclass
+class WordConfidence:
+    """
+    Confidence score attached to a single decoded word.
+
+    Attributes:
+        word:       The decoded word string (may be empty for punctuation tokens).
+        confidence: Mean softmax probability of the BPE tokens that form this word.
+        low:        True when confidence < cfg.model.illegible_token_threshold.
+    """
+    word:       str
+    confidence: float
+    low:        bool
+
+
+@dataclass
 class LineResult:
     text: str
-    confidence: float                        # mean token probability (0-1)
+    confidence: float                           # mean token probability (0-1)
     token_confidences: list[float] = field(default_factory=list)
-    needs_review: bool = False               # True when cross-check flags disagreement
-    difficulty_tag: str = "clean"            # "clean" | "hard" — set by detector
+    word_confidences:  list[WordConfidence] = field(default_factory=list)  # Step 4
+    needs_review: bool = False                  # True when hallucination risk flagged
+    difficulty_tag: str = "clean"               # "clean" | "hard" — set by detector
 
 
 # ── Illegible masking ─────────────────────────────────────────────────────────
@@ -87,6 +103,58 @@ def _apply_illegible_mask(
     return " ".join(p for p in parts if p).strip()
 
 
+def _build_word_confidences(
+    token_strings: list[str],
+    token_probs: list[float],
+    threshold: float,
+) -> list[WordConfidence]:
+    """
+    Group BPE tokens into words and compute per-word mean confidence.
+
+    TrOCR uses a RoBERTa tokenizer where word-initial tokens start with
+    a leading space (\u0120 / 'Ġ') and continuation tokens do not.
+    We group tokens into words on that boundary, then average their
+    softmax probabilities to get one confidence score per word.
+
+    Args:
+        token_strings: Decoded token strings from the tokenizer.
+        token_probs:   Softmax probability of each token (same length).
+        threshold:     Tokens below this are flagged ``low=True``.
+
+    Returns:
+        List of :class:`WordConfidence` objects, one per word.
+    """
+    if not token_strings:
+        return []
+
+    word_tokens:  list[str]   = []
+    word_probs:   list[float] = []
+    result: list[WordConfidence] = []
+
+    def _flush():
+        if not word_tokens:
+            return
+        word_str  = "".join(word_tokens).strip()
+        mean_conf = float(np.mean(word_probs))
+        result.append(WordConfidence(
+            word=word_str,
+            confidence=mean_conf,
+            low=mean_conf < threshold,
+        ))
+
+    for tok, prob in zip(token_strings, token_probs):
+        # RoBERTa BPE: leading-space char \u0120 marks a new word boundary
+        is_new_word = tok.startswith("\u0120") or tok.startswith(" ") or not word_tokens
+        if is_new_word and word_tokens:
+            _flush()
+            word_tokens, word_probs = [], []
+        word_tokens.append(tok.lstrip("\u0120").lstrip())
+        word_probs.append(prob)
+
+    _flush()
+    return [w for w in result if w.word]  # drop empty-string entries
+
+
 # ── Textract cross-check ──────────────────────────────────────────────────────
 
 def _textract_line(crop_pil: Image.Image, region: str) -> str:
@@ -117,6 +185,96 @@ def _cer_quick(a: str, b: str) -> float:
     return dp[n] / max(1, n)
 
 
+# ── Step 2: Visual-grounding hallucination risk check ────────────────────────
+
+def flag_hallucination_risk(
+    line_image: Image.Image,
+    predicted_text: str,
+    per_token_confidences: list[float],
+    threshold: float = 0.45,
+    length_ratio: float = 2.5,
+) -> bool:
+    """
+    Flag a transcription as high hallucination-risk.
+
+    A line is flagged when BOTH conditions hold:
+      (a) Mean token confidence is below *threshold* — the decoder was
+          uncertain, making LM-prior-driven confabulation more likely.
+      (b) The predicted word count exceeds what the crop's ink density
+          can plausibly support by more than *length_ratio* — a short,
+          sparse crop producing a long fluent sentence is a strong signal
+          that the decoder is hallucinating rather than reading.
+
+    Ink-density word-count estimate:
+      We count the number of distinct ink "runs" (connected horizontal
+      segments of dark pixels) in the horizontal projection of the binary
+      crop.  Each run corresponds roughly to one word.  This is a fast,
+      model-free estimate that does not require a word detector.
+
+    Args:
+        line_image:            PIL image of the line crop (any mode).
+        predicted_text:        Decoded text string from TrOCR.
+        per_token_confidences: List of per-token softmax probabilities.
+        threshold:             Mean confidence below which condition (a) fires.
+        length_ratio:          Max ratio of predicted_words / ink_words before
+                               condition (b) fires.
+
+    Returns:
+        ``True`` if the line is high hallucination-risk and should be
+        flagged ``needs_review=True`` in :class:`LineResult`.
+    """
+    import cv2 as _cv2
+
+    if not predicted_text.strip() or not per_token_confidences:
+        return False
+
+    # Condition (a): mean confidence check
+    mean_conf = float(np.mean(per_token_confidences))
+    if mean_conf >= threshold:
+        return False   # high confidence — not a hallucination risk
+
+    # Condition (b): ink-density word-count estimate
+    gray = np.array(line_image.convert("L"))
+    # Binarise: pixels darker than 128 are ink
+    _, binary = _cv2.threshold(gray, 128, 255, _cv2.THRESH_BINARY_INV)
+    # Horizontal projection: sum of ink pixels per column
+    col_proj = binary.sum(axis=0).astype(float)
+    # Smooth to merge broken strokes within a word
+    kernel = np.ones(5) / 5
+    col_proj = np.convolve(col_proj, kernel, mode="same")
+    # Count ink runs (transitions from 0 to >0) as word estimate
+    ink_threshold = col_proj.max() * 0.05
+    in_run = False
+    ink_word_count = 0
+    for v in col_proj:
+        if not in_run and v > ink_threshold:
+            in_run = True
+            ink_word_count += 1
+        elif in_run and v <= ink_threshold:
+            in_run = False
+
+    if ink_word_count == 0:
+        return False
+    ink_word_count = max(3, ink_word_count)  # floor: real lines have >= a few words
+
+    # Count predicted words (skip [illegible] placeholders)
+    predicted_words = [
+        w for w in predicted_text.split()
+        if not w.startswith("[")
+    ]
+    predicted_word_count = max(1, len(predicted_words))
+
+    ratio = predicted_word_count / ink_word_count
+    if ratio > length_ratio:
+        log.debug(
+            "Hallucination risk: pred_words=%d ink_words=%d ratio=%.1f conf=%.2f text=%r",
+            predicted_word_count, ink_word_count, ratio, mean_conf, predicted_text[:50],
+        )
+        return True
+
+    return False
+
+
 # ── Main engine ───────────────────────────────────────────────────────────────
 
 class TrOCREngine:
@@ -142,7 +300,9 @@ class TrOCREngine:
         tokenizer = RobertaTokenizer.from_pretrained(C.name)
         image_processor = ViTImageProcessor.from_pretrained(C.name)
         self._processor = TrOCRProcessor(image_processor=image_processor, tokenizer=tokenizer)
-        self._model = VisionEncoderDecoderModel.from_pretrained(C.name)
+        self._model = VisionEncoderDecoderModel.from_pretrained(
+            C.name, low_cpu_mem_usage=True
+        )
         self._model.to(self._device)
         self._model.eval()
         log.info("TrOCR model ready")
@@ -203,44 +363,7 @@ class TrOCREngine:
 
         trocr_results = self._run_batch_inference(crops, difficulty_tags)
 
-        if E.blend_mode == "trocr_only":
-            return trocr_results
-
-        from ocr.recognition.crnn.engine import get_crnn_engine
-        crnn = get_crnn_engine()
-
-        if E.blend_mode == "crnn_only":
-            if not crnn.available:
-                log.warning("CRNN engine not available, falling back to TrOCR")
-                return trocr_results
-            crnn_results = crnn.run_batch(crops)
-            return [
-                LineResult(text=t, confidence=c, difficulty_tag=difficulty_tags[i])
-                for i, (t, c) in enumerate(crnn_results)
-            ]
-
-        # confidence mode: CRNN fallback for low-confidence lines
-        if not crnn.available:
-            return trocr_results
-
-        low_conf_idx = [
-            i for i, r in enumerate(trocr_results)
-            if r.confidence < E.trocr_confidence_threshold
-        ]
-        if low_conf_idx:
-            low_crops = [crops[i] for i in low_conf_idx]
-            crnn_results = crnn.run_batch(low_crops)
-            for j, orig_i in enumerate(low_conf_idx):
-                crnn_text, crnn_conf = crnn_results[j]
-                if crnn_conf > trocr_results[orig_i].confidence and crnn_text.strip():
-                    log.debug("Line %d: CRNN (%.2f) > TrOCR (%.2f)", orig_i, crnn_conf,
-                              trocr_results[orig_i].confidence)
-                    trocr_results[orig_i] = LineResult(
-                        text=crnn_text, confidence=crnn_conf,
-                        difficulty_tag=difficulty_tags[orig_i]
-                    )
-
-        # Textract cross-check on still-low-confidence lines
+        # Textract cross-check on low-confidence lines
         if E.use_textract_crosscheck:
             for i, r in enumerate(trocr_results):
                 if r.confidence < E.trocr_confidence_threshold and self._is_valid(crops[i]):
@@ -281,15 +404,14 @@ class TrOCREngine:
                 images=pil_imgs, return_tensors="pt"
             ).pixel_values.to(self._device)
 
+            # Step 1 fix: remove length_penalty (ignored + warns with beam=1)
+            # and no_repeat_ngram_size (suppressed legitimate repeated words).
+            # Keep only mild repetition_penalty to break decoder loops.
             outputs = self._model.generate(
                 pixel_values,
                 num_beams=C.beam_size,
                 max_new_tokens=C.max_new_tokens,
-                # ── Hallucination suppression ──────────────────────────────
-                length_penalty=C.length_penalty,
                 repetition_penalty=C.repetition_penalty,
-                no_repeat_ngram_size=C.no_repeat_ngram_size,
-                # ──────────────────────────────────────────────────────────
                 output_scores=True,
                 return_dict_in_generate=True,
             )
@@ -300,7 +422,6 @@ class TrOCREngine:
                 )
                 line_conf = float(np.mean(token_probs)) if token_probs else 0.0
 
-                # Apply illegible masking — this is the core anti-hallucination step
                 masked_text = _apply_illegible_mask(
                     token_strings, token_probs,
                     token_threshold=C.illegible_token_threshold,
@@ -308,10 +429,31 @@ class TrOCREngine:
                     line_threshold=C.illegible_line_threshold,
                 )
 
+                # Step 1 + Step 4: build per-word confidence list
+                word_confs = _build_word_confidences(
+                    token_strings, token_probs,
+                    threshold=C.illegible_token_threshold,
+                )
+
+                # Step 2: flag hallucination risk using visual grounding check
+                crop_img = self._to_pil(crops[orig_i])
+                needs_review = flag_hallucination_risk(
+                    crop_img, masked_text, token_probs,
+                    threshold=C.hallucination_conf_threshold,
+                    length_ratio=C.hallucination_length_ratio,
+                )
+                if needs_review:
+                    log.warning(
+                        "Line %d flagged hallucination risk: conf=%.2f text=%r",
+                        orig_i, line_conf, masked_text[:60],
+                    )
+
                 results[orig_i] = LineResult(
                     text=masked_text,
                     confidence=line_conf,
                     token_confidences=token_probs,
+                    word_confidences=word_confs,
+                    needs_review=needs_review,
                     difficulty_tag=difficulty_tags[orig_i],
                 )
 
