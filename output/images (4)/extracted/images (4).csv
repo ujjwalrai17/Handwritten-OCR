@@ -1,0 +1,91 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,J,0.9320,False,0.8194,False,False,J is for JPEG
+1,2,is,0.7188,False,0.8194,False,False,J is for JPEG
+1,3,for,0.9993,False,0.8194,False,False,J is for JPEG
+1,4,JPEG,0.7954,False,0.8194,False,False,J is for JPEG
+2,1,Wikispecies,0.7003,False,0.6447,True,False,Wik is pe lies are supp dressed
+2,2,are,0.3292,False,0.6447,True,False,Wik is pe lies are supp dressed
+2,3,suppressed,0.6603,False,0.6447,True,False,Wik is pe lies are supp dressed
+3,1,What's,0.6977,False,0.6659,True,False,What 's a JPEG ?
+3,2,a,0.9119,False,0.6659,True,False,What 's a JPEG ?
+3,3,JPEG,0.3652,False,0.6659,True,False,What 's a JPEG ?
+3,4,?,0.6645,False,0.6659,True,False,What 's a JPEG ?
+4,1,"""",0.9857,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,2,JPEG,0.8404,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,3,is,1.0000,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,4,a,1.0000,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,5,standard,0.9994,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,6,file,0.9986,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,7,format,0.9999,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,8,for,1.0000,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+4,9,compressing,0.7855,False,0.9255,False,False,JPEG is a standard file format for comp pressing
+5,1,pictures,0.9994,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,2,so,0.9999,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,3,they,1.0000,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,4,can,1.0000,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,5,be,1.0000,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,6,stored,0.9899,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,7,or,0.9977,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,8,sent,0.9999,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,9,by,0.9998,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,10,email,0.8900,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+5,11,more,0.9963,False,0.9899,False,False,pict uses so they can be stored or sent by email more
+6,1,"""",0.5003,False,0.7196,True,False,Emb ray nation for joint photographic
+6,2,Embraviation,0.5520,False,0.7196,True,False,Emb ray nation for joint photographic
+6,3,for,0.9992,False,0.7196,True,False,Emb ray nation for joint photographic
+6,4,joint,0.8245,False,0.7196,True,False,Emb ray nation for joint photographic
+6,5,photographic,0.7678,False,0.7196,True,False,Emb ray nation for joint photographic
+7,1,-,0.3543,False,0.4785,True,False,- [illegible] in 1992
+7,2,Introduced,0.0496,True,0.4785,True,False,- [illegible] in 1992
+7,3,in,1.0000,False,0.4785,True,False,- [illegible] in 1992
+7,4,1992,0.4817,False,0.4785,True,False,- [illegible] in 1992
+8,1,"""",0.7552,False,0.9550,False,False,It is the most common format for images land usually
+8,2,It,0.9929,False,0.9550,False,False,It is the most common format for images land usually
+8,3,is,1.0000,False,0.9550,False,False,It is the most common format for images land usually
+8,4,the,1.0000,False,0.9550,False,False,It is the most common format for images land usually
+8,5,most,1.0000,False,0.9550,False,False,It is the most common format for images land usually
+8,6,common,1.0000,False,0.9550,False,False,It is the most common format for images land usually
+8,7,format,0.9997,False,0.9550,False,False,It is the most common format for images land usually
+8,8,for,1.0000,False,0.9550,False,False,It is the most common format for images land usually
+8,9,images,0.9990,False,0.9550,False,False,It is the most common format for images land usually
+8,10,land,0.6709,False,0.9550,False,False,It is the most common format for images land usually
+8,11,usually,0.9991,False,0.9550,False,False,It is the most common format for images land usually
+9,1,the,0.9979,False,0.7930,False,False,the default setting on cameras )
+9,2,default,0.9643,False,0.7930,False,False,the default setting on cameras )
+9,3,setting,0.7038,False,0.7930,False,False,the default setting on cameras )
+9,4,on,0.6385,False,0.7930,False,False,the default setting on cameras )
+9,5,cameras,0.8148,False,0.7930,False,False,the default setting on cameras )
+9,6,),0.7736,False,0.7930,False,False,the default setting on cameras )
+10,1,"""",0.9603,False,0.7186,True,False,JP G and JPEG are interchangeable
+10,2,JPG,0.7663,False,0.7186,True,False,JP G and JPEG are interchangeable
+10,3,and,0.9829,False,0.7186,True,False,JP G and JPEG are interchangeable
+10,4,JPEG,0.8317,False,0.7186,True,False,JP G and JPEG are interchangeable
+10,5,are,0.9514,False,0.7186,True,False,JP G and JPEG are interchangeable
+10,6,interchangeable,0.5833,False,0.7186,True,False,JP G and JPEG are interchangeable
+11,1,"""",0.8653,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,2,JPEG's,0.5287,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,3,compression,0.9108,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,4,is,1.0000,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,5,called,1.0000,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,6,lossy,0.7377,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,7,",",0.9984,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,8,in,0.9999,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,9,which,1.0000,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+11,10,image,0.9994,False,0.8697,False,False,"JPEG 's compression is called loss y , in which image"
+12,1,data,0.9992,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,2,is,1.0000,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,3,lost,0.9976,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,4,.,0.9994,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,5,A,0.9995,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,6,more,0.9999,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,7,reliable,0.9998,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,8,file,0.9995,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,9,format,0.9998,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,10,for,1.0000,False,0.9989,False,False,data is lost . A more reliable file format for image
+12,11,image,0.9970,False,0.9989,False,False,data is lost . A more reliable file format for image
+13,1,proservation,0.7314,False,0.7445,True,False,pro s creation is T IFF -
+13,2,is,0.9959,False,0.7445,True,False,pro s creation is T IFF -
+13,3,TIFF,0.9969,False,0.7445,True,False,pro s creation is T IFF -
+13,4,-,0.3859,False,0.7445,True,False,pro s creation is T IFF -
+14,1,HArchivesALOZ,0.7377,False,0.7247,True,False,H Arch ives AL O Z 1
+14,2,1,0.6858,False,0.7247,True,False,H Arch ives AL O Z 1

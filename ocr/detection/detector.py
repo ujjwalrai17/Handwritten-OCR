@@ -301,6 +301,11 @@ def _reassign_bleed_components(binary: np.ndarray, line_boxes: list[tuple]) -> l
     if len(line_boxes) < 2:
         return line_boxes
 
+    page_h, page_w = binary.shape
+    median_line_h = float(np.median([b[3] - b[1] for b in line_boxes]))
+    max_component_h = max(C.min_line_height, median_line_h * 2.5)
+    max_component_w = page_w * 0.80
+
     num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(
         (binary == 0).astype(np.uint8), connectivity=8
     )
@@ -310,16 +315,67 @@ def _reassign_bleed_components(binary: np.ndarray, line_boxes: list[tuple]) -> l
     adjusted = [list(b) for b in line_boxes]  # mutable copy
 
     for lbl in range(1, num_labels):
+        comp_x = stats[lbl, cv2.CC_STAT_LEFT]
+        comp_y1 = stats[lbl, cv2.CC_STAT_TOP]
+        comp_w = stats[lbl, cv2.CC_STAT_WIDTH]
+        comp_h = stats[lbl, cv2.CC_STAT_HEIGHT]
+        comp_area = stats[lbl, cv2.CC_STAT_AREA]
+
+        # Ignore borders, shadows, ruling remnants, and thresholding artifacts.
+        # A genuine ascender/descender bleed component is local; it should not
+        # span most of the page or dwarf the normal line height.
+        touches_page_edge = (
+            comp_x <= 1 or comp_y1 <= 1
+            or comp_x + comp_w >= page_w - 1
+            or comp_y1 + comp_h >= page_h - 1
+        )
+        if comp_h > max_component_h or comp_w > max_component_w:
+            continue
+        if touches_page_edge and comp_area > page_w * 0.02:
+            continue
+
         cy = centroids[lbl][1]
         # Find which line this component's centroid is closest to
         nearest = int(np.argmin([abs(cy - lc) for lc in line_centers]))
-        comp_y1 = stats[lbl, cv2.CC_STAT_TOP]
-        comp_y2 = comp_y1 + stats[lbl, cv2.CC_STAT_HEIGHT]
+        comp_y2 = comp_y1 + comp_h
+
+        # Only allow modest expansion around the original band. This prevents
+        # distant noise from pulling a crop into neighboring lines.
+        _, orig_y1, _, orig_y2 = line_boxes[nearest]
+        expansion_limit = max(C.line_padding * 3, int(median_line_h * 0.35))
+        if comp_y2 < orig_y1 - expansion_limit or comp_y1 > orig_y2 + expansion_limit:
+            continue
+
         # Expand that line's bbox to include this component
         adjusted[nearest][1] = min(adjusted[nearest][1], comp_y1)
         adjusted[nearest][3] = max(adjusted[nearest][3], comp_y2)
 
     return [tuple(b) for b in adjusted]
+
+
+def _tighten_box_to_ink(binary: np.ndarray, box: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
+    """
+    Shrink a line box to the ink extents inside its band.
+
+    Projection fallback boxes intentionally cover the full page width. Passing
+    those extreme aspect-ratio crops to TrOCR can squash the handwriting during
+    resizing, so tighten horizontally and vertically before final padding.
+    """
+    x1, y1, x2, y2 = [int(v) for v in box]
+    band = binary[y1:y2, x1:x2]
+    if band.size == 0:
+        return x1, y1, x2, y2
+
+    ys, xs = np.where(band == 0)
+    if len(xs) == 0 or len(ys) == 0:
+        return x1, y1, x2, y2
+
+    return (
+        x1 + int(xs.min()),
+        y1 + int(ys.min()),
+        x1 + int(xs.max()) + 1,
+        y1 + int(ys.max()) + 1,
+    )
 
 
 # ── Word → Line Grouping ──────────────────────────────────────────────────────
@@ -347,6 +403,205 @@ def _group_into_lines(word_boxes: list[tuple]) -> list[tuple]:
         if not placed:
             lines.append([box])
     return sorted([_merge(ln) for ln in lines], key=lambda b: b[1])
+
+
+# ── Hierarchical Word→Line Detection ────────────────────────────────────────
+
+def detect_words_hierarchical(bgr: np.ndarray, pil_img: Image.Image) -> list[TextLine]:
+    """
+    Hierarchical word-and-line detection pipeline.
+
+    Detects individual word bounding boxes, groups them into lines via
+    spatial Y-centroid clustering, and returns one TextLine per group.
+
+    Each line crop is built by stitching the individual rotated word crops
+    (colour → grayscale) horizontally with a small gap, giving TrOCR a
+    clean, axis-aligned strip instead of a wide noisy merged bbox.
+
+    Args:
+        bgr:     BGR uint8 image.
+        pil_img: PIL RGB image (for WordDetector).
+
+    Returns:
+        List of :class:`TextLine` objects sorted top-to-bottom.
+    """
+    from ocr.detection.word_detector import WordDetector
+    from ocr.detection.line_grouper import SpatialLineGrouper
+    from PIL import Image as _PILImage
+
+    detector = WordDetector()
+    grouper  = SpatialLineGrouper(overlap_ratio=0.6)   # centroid-distance ratio
+
+    word_regions = detector.detect(pil_img)
+    if not word_regions:
+        log.warning("Hierarchical detector: no words found — falling back.")
+        return []
+
+    line_groups = grouper.group(word_regions)
+    if not line_groups:
+        return []
+
+    h_img, w_img = bgr.shape[:2]
+    lines: list[TextLine] = []
+    word_gap = 8   # pixels between stitched word crops
+
+    for grp in line_groups:
+        # Stitch rotated word crops horizontally → one clean line strip
+        crops = [w.crop_pil.convert("L") for w in grp.words]
+        if not crops:
+            continue
+
+        line_h = max(c.height for c in crops)
+        total_w = sum(c.width for c in crops) + word_gap * (len(crops) - 1)
+        strip = _PILImage.new("L", (total_w, line_h), color=255)
+        x_off = 0
+        for crop in crops:
+            # Pad crop to line_h vertically (centre it)
+            pad_top = (line_h - crop.height) // 2
+            strip.paste(crop, (x_off, pad_top))
+            x_off += crop.width + word_gap
+
+        strip_np = np.array(strip)
+        if strip_np.shape[0] < C.min_line_height or strip_np.shape[1] < C.min_line_width:
+            continue
+
+        tag = _tag_difficulty(strip_np)
+        lines.append(TextLine(
+            bbox=grp.bbox,
+            crop=strip_np,
+            difficulty_tag=tag,
+        ))
+
+    hard = sum(1 for ln in lines if ln.difficulty_tag == "hard")
+    log.info(
+        "Hierarchical: %d word groups → %d lines (%d hard / %d clean).",
+        len(line_groups), len(lines), hard, len(lines) - hard,
+    )
+    return lines
+
+
+# ── Step 3: Line-merge verification ────────────────────────────────────────────
+
+def verify_line_segmentation(
+    binary: np.ndarray,
+    detected_lines: list,
+    smooth_window: int = 11,
+    merge_height_ratio: float = 1.8,
+) -> dict:
+    """
+    Verify detected line count against a projection-peak estimate and
+    identify crops that are suspiciously tall (likely merged lines).
+
+    Two checks:
+      1. Peak-count check — counts peaks in the smoothed horizontal ink
+         projection of the full page.  Each peak = one text line.  If the
+         detected line count is less than 70% of the peak count, lines were
+         likely merged.
+      2. Height-ratio check — any crop whose height exceeds
+         ``merge_height_ratio * median_line_height`` is flagged as a
+         probable merged crop, with its pixel range logged.
+
+    Args:
+        binary:             Binarised page image (0=ink, 255=background).
+        detected_lines:     List of :class:`TextLine` objects from detect_lines.
+        smooth_window:      Gaussian smoothing window for projection (px).
+        merge_height_ratio: Crops taller than this multiple of the median
+                            line height are flagged as merged.
+
+    Returns:
+        dict with keys:
+          ``peak_estimate``   – int, projection-based line count estimate
+          ``detected_count``  – int, number of detected lines
+          ``merged_crops``    – list of dicts {index, bbox, height, y_ranges}
+                               for each suspected merged crop
+          ``warning``         – str or None, human-readable summary
+    """
+    if not detected_lines:
+        return {"peak_estimate": 0, "detected_count": 0,
+                "merged_crops": [], "warning": "No lines detected."}
+
+    # ── Check 1: projection peak count ───────────────────────────────────────
+    projection = np.sum(binary == 0, axis=1).astype(float)
+    smoothed   = _smooth(projection, smooth_window)
+    peak_val   = smoothed.max()
+    if peak_val == 0:
+        peak_estimate = 0
+    else:
+        # A peak is a local maximum above 15% of the global max
+        peak_threshold = peak_val * 0.15
+        above = smoothed > peak_threshold
+        peak_estimate = 0
+        in_peak = False
+        for v in above:
+            if v and not in_peak:
+                peak_estimate += 1
+                in_peak = True
+            elif not v:
+                in_peak = False
+
+    detected_count = len(detected_lines)
+
+    # ── Check 2: height-ratio merge detection ───────────────────────────────
+    heights = [ln.bbox[3] - ln.bbox[1] for ln in detected_lines]
+    median_h = float(np.median(heights))
+    merge_threshold = median_h * merge_height_ratio
+
+    merged_crops = []
+    for idx, ln in enumerate(detected_lines):
+        x1, y1, x2, y2 = ln.bbox
+        h = y2 - y1
+        if h > merge_threshold:
+            # Estimate where the internal line boundary likely is
+            # by finding the row with minimum ink inside this crop
+            crop_proj = np.sum(binary[y1:y2, :] == 0, axis=1).astype(float)
+            if len(crop_proj) > 4:
+                # Smooth and find the valley (minimum) in the middle half
+                mid_start = len(crop_proj) // 4
+                mid_end   = 3 * len(crop_proj) // 4
+                mid_proj  = crop_proj[mid_start:mid_end]
+                valley_offset = int(np.argmin(mid_proj)) + mid_start
+                split_y = y1 + valley_offset
+                y_ranges = [(y1, split_y), (split_y, y2)]
+            else:
+                y_ranges = [(y1, y2)]
+
+            merged_crops.append({
+                "index":   idx,
+                "bbox":    tuple(int(v) for v in ln.bbox),
+                "height":  int(h),
+                "y_ranges": [(int(a), int(b)) for a, b in y_ranges],
+            })
+            log.warning(
+                "Possible merged crop at line %d: height=%dpx (%.1fx median=%.0fpx) "
+                "bbox=%s  estimated split at y=%s",
+                idx, h, h / median_h, median_h,
+                tuple(int(v) for v in ln.bbox),
+                [int(r[0]) for r in y_ranges[1:]],
+            )
+
+    # ── Summary warning ────────────────────────────────────────────────────────
+    warning = None
+    issues = []
+    if peak_estimate > 0 and detected_count < peak_estimate * 0.70:
+        issues.append(
+            f"detected {detected_count} lines but projection suggests "
+            f"~{peak_estimate} — {peak_estimate - detected_count} lines may be merged"
+        )
+    if merged_crops:
+        issues.append(
+            f"{len(merged_crops)} crop(s) are >{merge_height_ratio:.1f}x median height "
+            f"({median_h:.0f}px) — likely merged text rows"
+        )
+    if issues:
+        warning = "Line segmentation warning: " + "; ".join(issues)
+        log.warning(warning)
+
+    return {
+        "peak_estimate":  peak_estimate,
+        "detected_count": detected_count,
+        "merged_crops":   merged_crops,
+        "warning":        warning,
+    }
 
 
 # ── Main Entry ────────────────────────────────────────────────────────────────
@@ -377,15 +632,25 @@ def detect_lines(binary: np.ndarray, bgr: np.ndarray) -> list[TextLine]:
     p = C.line_padding
     lines = []
     for (x1, y1, x2, y2) in line_boxes:
+        x1, y1, x2, y2 = _tighten_box_to_ink(binary, (x1, y1, x2, y2))
         x1c, y1c = max(0, x1 - p), max(0, y1 - p)
         x2c, y2c = min(w, x2 + p), min(h, y2 + p)
-        crop = binary[y1c:y2c, x1c:x2c]
-        if crop.shape[0] >= C.min_line_height and crop.shape[1] >= C.min_line_width:
-            tag = _tag_difficulty(crop)
+        binary_crop = binary[y1c:y2c, x1c:x2c]
+        # TrOCR performs better on natural grayscale/color handwriting than on
+        # hard-thresholded binary crops, especially for photographed notebook
+        # pages. Keep binary for detection and difficulty tagging, but return
+        # the aligned source crop for recognition.
+        crop = bgr[y1c:y2c, x1c:x2c] if bgr.shape[:2] == binary.shape else binary_crop
+        if binary_crop.shape[0] >= C.min_line_height and binary_crop.shape[1] >= C.min_line_width:
+            tag = _tag_difficulty(binary_crop)
             lines.append(TextLine(bbox=(x1c, y1c, x2c, y2c), crop=crop,
                                   difficulty_tag=tag))
 
     hard_count = sum(1 for ln in lines if ln.difficulty_tag == "hard")
     log.info("Segmented %d lines (%d hard / %d clean)",
              len(lines), hard_count, len(lines) - hard_count)
+
+    # Step 3: verify segmentation and warn about merged crops
+    verify_line_segmentation(binary, lines)
+
     return lines

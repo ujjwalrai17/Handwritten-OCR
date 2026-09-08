@@ -5,6 +5,7 @@ Run with: pytest tests/ -v
 
 import numpy as np
 import pytest
+from pathlib import Path
 from PIL import Image
 
 from ocr.preprocessing.pipeline import preprocess, PreprocessingError
@@ -12,8 +13,18 @@ from ocr.postprocessing.corrector import (
     correct_text, postprocess, keyword_search, DocumentResult
 )
 from ocr.recognition.engine import LineResult, TrOCREngine
+from ocr.recognition.easyocr_engine import _clean_scene_text
+from ocr.recognition.prescription_engine import clean_prescription_text
+from ocr.universal_htr import (
+    DocumentType,
+    DocumentTypeClassifier,
+    OverlayTextIsolator,
+    RevisionHandler,
+    UniversalHTRPipeline,
+)
 from ocr.evaluation.metrics import compute_cer, compute_wer, evaluate
 from ocr.utils.output_writer import save_text, save_confidence_csv
+from main import _looks_like_prescription, _looks_like_scene_text
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
@@ -70,7 +81,114 @@ def test_preprocess_resizes_large_image():
     assert max(binary.shape) <= 2048
 
 
+def test_scene_text_router_detects_quote_image():
+    sample = Path("data/samples/images (1).jpg")
+    if not sample.exists():
+        pytest.skip("quote image sample is not available")
+    assert _looks_like_scene_text(str(sample))
+
+
+def test_scene_text_router_keeps_page_images_on_trocr():
+    sample = Path("data/samples/handwritten.jpg")
+    if not sample.exists():
+        pytest.skip("handwritten page sample is not available")
+    assert not _looks_like_scene_text(str(sample))
+
+
+def test_scene_text_cleanup_restores_quote_attribution_symbol():
+    assert _clean_scene_text("Mothew Jenesa") == "© Mother Teresa"
+
+
 # ── Post-processing ───────────────────────────────────────────────────────────
+
+def test_prescription_cleanup_normalizes_dosage_and_medicine_terms():
+    text = clean_prescription_text("TUb Diclofenae O - O - O")
+    assert text == "Tab. Diclofenac 0-0-0"
+
+
+def test_prescription_router_keeps_plain_handwriting_out():
+    sample = Path("data/samples/handwritten.jpg")
+    if not sample.exists():
+        pytest.skip("handwritten page sample is not available")
+    assert not _looks_like_prescription(str(sample))
+
+
+def test_universal_classifier_returns_supported_type():
+    sample = Path("data/samples/handwritten.jpg")
+    if not sample.exists():
+        pytest.skip("handwritten page sample is not available")
+    result = DocumentTypeClassifier().classify(sample)
+    assert result.document_type in set(DocumentType)
+    assert 0.0 <= result.confidence <= 1.0
+
+
+def test_overlay_isolator_returns_image(text_image, tmp_path):
+    path = tmp_path / "overlay.png"
+    text_image.save(path)
+    isolated = OverlayTextIsolator().isolate(path)
+    assert isolated.size == text_image.size
+
+
+def test_revision_handler_handles_clean_image(text_image, tmp_path):
+    path = tmp_path / "clean.png"
+    text_image.save(path)
+    marks = RevisionHandler().analyze(path)
+    assert isinstance(marks, list)
+
+
+def test_universal_pipeline_output_shape(monkeypatch, text_image, tmp_path):
+    from ocr.universal_htr import ClassificationResult, RegionTranscript
+
+    path = tmp_path / "doc.png"
+    text_image.save(path)
+    pipeline = UniversalHTRPipeline()
+    monkeypatch.setattr(
+        pipeline.classifier,
+        "classify",
+        lambda _: ClassificationResult(DocumentType.CLEAN_PROSE, 0.9),
+    )
+    monkeypatch.setattr(
+        pipeline.vlm_reader,
+        "read",
+        lambda *args, **kwargs: [RegionTranscript("page", "page", "hello", 0.9)],
+    )
+    output = pipeline.transcribe(path)
+    assert output.clean_final_text == "hello"
+    assert output.document_type == DocumentType.CLEAN_PROSE
+
+
+def test_universal_clean_prose_fallback_uses_trocr(monkeypatch, text_image, tmp_path):
+    import ocr.pipeline as pipeline_module
+    import ocr.universal_htr as universal_module
+    from ocr.postprocessing.corrector import ProcessedLine
+    from ocr.universal_htr import VLMDocumentReader
+
+    path = tmp_path / "doc.png"
+    text_image.save(path)
+
+    def fake_trocr(source, source_path="", normalize_strokes=False):
+        doc = DocumentResult(source_path=source_path)
+        doc.lines.append(
+            ProcessedLine(
+                raw_text="hello",
+                corrected_text="hello",
+                confidence=0.9,
+                is_low_confidence=False,
+            )
+        )
+        return doc, 0.0
+
+    def fail_easyocr(_):
+        raise AssertionError("Clean prose fallback should not use EasyOCR")
+
+    monkeypatch.setattr(pipeline_module, "run", fake_trocr)
+    monkeypatch.setattr(universal_module, "run_easyocr", fail_easyocr)
+
+    transcripts = VLMDocumentReader()._fallback_read(path, DocumentType.CLEAN_PROSE, regions=None)
+
+    assert [t.text for t in transcripts] == ["hello"]
+    assert transcripts[0].engine == "fallback_trocr"
+
 
 def test_correct_text_preserves_proper_noun():
     assert correct_text("London is great") == correct_text("London is great")

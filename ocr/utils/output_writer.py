@@ -26,20 +26,39 @@ def save_text(doc, output_path: Path = None) -> Path:
 
 
 def save_confidence_csv(doc, output_path: Path = None) -> Path:
-    """Write per-line confidence scores to CSV."""
+    """Write per-line AND per-word confidence scores to CSV."""
     path = output_path or (cfg.paths.results_dir / "confidence_scores.csv")
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["line_id", "text", "confidence", "low_confidence", "raw_text"])
+        writer.writerow([
+            "line_id", "word_id", "word", "word_confidence", "word_low_conf",
+            "line_confidence", "line_low_confidence", "hallucination_risk", "line_text",
+        ])
         for i, ln in enumerate(doc.lines):
-            writer.writerow([
-                i + 1,
-                ln.corrected_text,
-                f"{ln.confidence:.4f}",
-                ln.is_low_confidence,
-                ln.raw_text,
-            ])
+            word_confs = ln.token_confidences  # list[WordConfidence] stored here
+            # token_confidences holds WordConfidence objects when available
+            wc_list = getattr(ln, "word_confidences", [])
+            if wc_list:
+                for w_idx, wc in enumerate(wc_list):
+                    writer.writerow([
+                        i + 1,
+                        w_idx + 1,
+                        wc.word,
+                        f"{wc.confidence:.4f}",
+                        wc.low,
+                        f"{ln.confidence:.4f}",
+                        ln.is_low_confidence,
+                        ln.needs_review,
+                        ln.corrected_text,
+                    ])
+            else:
+                # Fallback: one row per line when word-level data is absent
+                writer.writerow([
+                    i + 1, "", ln.corrected_text, "", "",
+                    f"{ln.confidence:.4f}", ln.is_low_confidence,
+                    ln.needs_review, ln.corrected_text,
+                ])
     log.info("Confidence CSV saved: %s", path)
     return path
 
