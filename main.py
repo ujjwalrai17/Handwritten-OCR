@@ -102,19 +102,20 @@ def _run_with_debug(args, sample_dir: Path):
         log.error("Preprocessing failed: %s", e)
         return DocumentResult(source_path=args.image), 0.0, {}
 
-    lines = detect_lines(binary, bgr)
+    det_dir = sample_dir / "detection"
+    det_dir.mkdir(parents=True, exist_ok=True)
+
+    lines = detect_lines(binary, bgr, debug_dir=str(det_dir))
     if not lines:
         return DocumentResult(source_path=args.image), 0.0, prep_meta
 
     try:
         import cv2 as _cv2
-        det_dir = sample_dir / "detection"
-        det_dir.mkdir(parents=True, exist_ok=True)
         vis = bgr.copy()
         for ln in lines:
             x1, y1, x2, y2 = ln.bbox
             _cv2.rectangle(vis, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        _cv2.imwrite(str(det_dir / "text_detection_boxes.png"), vis)
+        _cv2.imwrite(str(det_dir / "final_detection_boxes.png"), vis)
         for idx, ln in enumerate(lines):
             _cv2.imwrite(str(det_dir / f"line_{idx:03d}.png"), ln.crop)
     except Exception as _e:

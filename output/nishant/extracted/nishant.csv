@@ -1,0 +1,106 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,0,0.5171,False,0.8011,False,False,0 1
+1,2,1,0.8295,False,0.8011,False,False,0 1
+2,1,0,0.9268,False,0.9268,False,False,0
+3,1,10.,0.7312,False,0.7312,True,False,10
+4,1,Today,0.7466,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,2,is,0.7400,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,3,Thursday,0.8797,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,4,",",0.1417,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,5,men,0.3681,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,6,now,0.2142,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,7,once,0.2092,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,8,-,0.3348,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,9,But,0.6913,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+4,10,it,0.7280,False,0.5256,True,False,"Today is Thursday , men now once - But it"
+5,1,sp,0.5175,False,0.5175,True,False,sp
+6,1,1952,0.1259,False,0.1259,True,False,19 [illegible]
+7,1,sp,0.4633,False,0.4633,True,False,sp [illegible]
+8,1,a,0.6770,False,0.6770,True,False,a
+9,1,#,0.0723,True,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,2,the,0.0279,True,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,3,highest,0.0487,True,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,4,point,0.1016,False,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,5,of,0.4428,False,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,6,the,0.2818,False,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,7,first,0.0417,True,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+9,8,time,0.1691,False,0.1580,True,False,[illegible] point of the [illegible] [illegible]
+10,1,1952,0.1238,False,0.3724,True,False,19 [illegible] 53
+10,2,53,0.4107,False,0.3724,True,False,19 [illegible] 53
+11,1,THE,0.2143,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,2,LEGISIDENT,0.4850,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,3,MANIAN,0.2184,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,4,ACCESS,0.4419,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,5,BUFIT,0.6648,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,6,BOOKS,0.8425,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+11,7,30,0.6792,False,0.5352,True,False,THE LEG IS IDENT MAN IAN ACC ESS BU F IT BOOK S 30
+12,1,"""",0.9165,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,2,GREEN,0.3305,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,3,TIMES,0.8453,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,4,",",0.9281,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,5,"""",0.9640,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,6,I'll,0.5385,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,7,just,0.6863,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,8,take,0.9998,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,9,notes,0.9885,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,10,on,0.9942,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,11,my,0.8179,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+12,12,",",0.5591,False,0.7674,False,False,"GREEN TIM ES , "" I 'll just take notes on my ,"
+13,1,I,0.4096,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,2,approved,0.1059,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,3,that,0.3882,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,4,it,0.7478,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,5,still,0.9566,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,6,been,0.8323,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,7,too,0.5037,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,8,comfortable,0.2616,False,0.5648,True,False,I approved that it still been too comfortable toward
+13,9,toward,0.5961,False,0.5648,True,False,I approved that it still been too comfortable toward
+14,1,"""",0.2884,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,2,Then,0.3280,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,3,I,0.2726,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,4,understand,0.3232,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,5,that,0.6442,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,6,the,0.2745,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,7,influence,0.0955,True,0.4880,True,False,Then I understand that the [illegible] into what to
+14,8,into,0.1265,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,9,what,0.1948,False,0.4880,True,False,Then I understand that the [illegible] into what to
+14,10,to,0.6928,False,0.4880,True,False,Then I understand that the [illegible] into what to
+15,1,a,0.1770,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,2,member,0.0734,True,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,3,of,0.8929,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,4,the,0.8569,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,5,United,0.1038,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,6,States,0.9903,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,7,Department,0.1927,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,8,of,0.3949,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,9,Agriculture,0.1736,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,10,and,0.1624,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,11,the,0.1419,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,12,Government,0.3572,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,13,of,0.5045,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,14,the,0.1395,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,15,American,0.1343,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,16,Government,0.1867,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+15,17,of,0.2861,False,0.3363,True,True,a [illegible] of the United States Department of Agriculture and the Government of the American Government of
+16,1,"""",0.5532,False,0.4792,True,False,Remember into the first ever of his career
+16,2,Remember,0.5965,False,0.4792,True,False,Remember into the first ever of his career
+16,3,into,0.1685,False,0.4792,True,False,Remember into the first ever of his career
+16,4,the,0.6832,False,0.4792,True,False,Remember into the first ever of his career
+16,5,first,0.6626,False,0.4792,True,False,Remember into the first ever of his career
+16,6,ever,0.3365,False,0.4792,True,False,Remember into the first ever of his career
+16,7,of,0.2027,False,0.4792,True,False,Remember into the first ever of his career
+16,8,his,0.3484,False,0.4792,True,False,Remember into the first ever of his career
+16,9,career,0.5075,False,0.4792,True,False,Remember into the first ever of his career
+17,1,(,0.4328,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,2,B,0.1541,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,3,different,0.1546,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,4,people,0.4079,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,5,",",0.1708,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,6,"""",0.3984,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,7,ninety,0.3774,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,8,this,0.2277,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,9,!,0.6569,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,10,it,0.8650,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,11,is,0.1644,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,12,now,0.5187,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"
+17,13,very,0.5070,False,0.3959,True,False,"( B different people , "" ninety this ! it is now very"

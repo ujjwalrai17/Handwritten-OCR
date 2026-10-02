@@ -1,0 +1,151 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,propaganda,0.3168,False,0.4728,True,False,"prop agenda Belgium . "" Che w res"
+1,2,Belgium,0.3928,False,0.4728,True,False,"prop agenda Belgium . "" Che w res"
+1,3,.,0.6458,False,0.4728,True,False,"prop agenda Belgium . "" Che w res"
+1,4,"""",0.4959,False,0.4728,True,False,"prop agenda Belgium . "" Che w res"
+1,5,Chewers,0.4946,False,0.4728,True,False,"prop agenda Belgium . "" Che w res"
+2,1,deepers,0.6260,False,0.5866,True,False,"deep res recovered from Singapore , and"
+2,2,recovered,0.3268,False,0.5866,True,False,"deep res recovered from Singapore , and"
+2,3,from,0.4943,False,0.5866,True,False,"deep res recovered from Singapore , and"
+2,4,Singapore,0.4528,False,0.5866,True,False,"deep res recovered from Singapore , and"
+2,5,",",0.1777,False,0.5866,True,False,"deep res recovered from Singapore , and"
+2,6,and,0.6886,False,0.5866,True,False,"deep res recovered from Singapore , and"
+3,1,was,0.1793,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,2,having,0.5558,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,3,changed,0.6901,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,4,unopposed,0.4712,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,5,friend,0.2977,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,6,learn,0.0802,True,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,7,.,0.4309,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,8,"""",0.4570,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+3,9,We,0.7513,False,0.5078,True,False,"was having changed un opp used friend [illegible] . "" We"
+4,1,g.,0.1931,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,2,semificana,0.3186,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,3,(,0.1407,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,4,means,0.6211,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,5,any,0.0832,True,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,6,no,0.7334,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,7,reason,0.9194,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,8,#,0.3839,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,9,audio,0.2288,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+4,10,are,0.5906,False,0.4024,True,False,g [illegible] ic ana ( means [illegible] no reason # audio are
+5,1,"""",0.5122,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,2,long-,0.3362,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,3,men's,0.3105,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,4,career,0.4164,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,5,.,0.3244,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,6,Foreigners,0.2662,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+5,7,generalists,0.5124,False,0.3945,True,False,long - men [illegible] career [illegible] res general its
+6,1,can,0.1922,False,0.3580,True,False,can designate [illegible] and welfare the growing
+6,2,designate,0.2509,False,0.3580,True,False,can designate [illegible] and welfare the growing
+6,3,sunlight,0.0933,True,0.3580,True,False,can designate [illegible] and welfare the growing
+6,4,and,0.2458,False,0.3580,True,False,can designate [illegible] and welfare the growing
+6,5,welfare,0.1208,False,0.3580,True,False,can designate [illegible] and welfare the growing
+6,6,the,0.1158,False,0.3580,True,False,can designate [illegible] and welfare the growing
+6,7,growing,0.5193,False,0.3580,True,False,can designate [illegible] and welfare the growing
+7,1,management's,0.3452,False,0.4288,True,False,management 's resigned secondary - Ph ry and i
+7,2,resigned,0.2170,False,0.4288,True,False,management 's resigned secondary - Ph ry and i
+7,3,secondary-,0.1914,False,0.4288,True,False,management 's resigned secondary - Ph ry and i
+7,4,Phryangi,0.5355,False,0.4288,True,False,management 's resigned secondary - Ph ry and i
+8,1,census,0.2510,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,2,"""",0.9585,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,3,Evans,0.2511,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,4,gives,0.5220,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,5,necessary,0.1644,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,6,.,0.2545,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,7,',0.3770,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,8,Parampus,0.6363,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+8,9,',0.6954,False,0.4869,True,False,"c census "" Evans gives necessary . ' Par amp us '"
+9,1,bapricuous,0.2513,False,0.4627,True,False,b ap rich nous requirement Cere many Assistance
+9,2,requirement,0.3671,False,0.4627,True,False,b ap rich nous requirement Cere many Assistance
+9,3,Ceremony,0.4287,False,0.4627,True,False,b ap rich nous requirement Cere many Assistance
+9,4,Assistance,0.6647,False,0.4627,True,False,b ap rich nous requirement Cere many Assistance
+10,1,as's,0.7927,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,2,escape,0.5477,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,3,mishings,0.2224,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,4,.,0.2834,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,5,1tempered,0.4234,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,6,cream,0.3556,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+10,7,",",0.6509,False,0.4824,True,False,"as 's escape wish rings . 1 them perez cream ,"
+11,1,as,0.2865,False,0.5068,True,False,as previous award winners of pictures personnel
+11,2,previous,0.8610,False,0.5068,True,False,as previous award winners of pictures personnel
+11,3,award,0.1158,False,0.5068,True,False,as previous award winners of pictures personnel
+11,4,winners,0.6685,False,0.5068,True,False,as previous award winners of pictures personnel
+11,5,of,0.5403,False,0.5068,True,False,as previous award winners of pictures personnel
+11,6,pictures,0.1767,False,0.5068,True,False,as previous award winners of pictures personnel
+11,7,personnel,0.2594,False,0.5068,True,False,as previous award winners of pictures personnel
+11,8,.,0.6348,False,0.5068,True,False,as previous award winners of pictures personnel
+12,1,"""",0.2856,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,2,Suppose,0.1329,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,3,seems,0.3355,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,4,less,0.1807,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,5,again,0.2669,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,6,.,0.5244,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,7,"""",0.9813,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,8,Some,0.1070,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+12,9,ever,0.7233,False,0.4756,True,False,"Suppose seems less again . "" Some ever"
+13,1,deepers,0.6042,False,0.5281,True,False,"deep res recovered from Singapore , and"
+13,2,recovered,0.2153,False,0.5281,True,False,"deep res recovered from Singapore , and"
+13,3,from,0.4145,False,0.5281,True,False,"deep res recovered from Singapore , and"
+13,4,Singapore,0.5301,False,0.5281,True,False,"deep res recovered from Singapore , and"
+13,5,",",0.1793,False,0.5281,True,False,"deep res recovered from Singapore , and"
+13,6,and,0.6524,False,0.5281,True,False,"deep res recovered from Singapore , and"
+14,1,are,0.3012,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,2,always,0.3247,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,3,change,0.3392,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,4,unrepresented,0.2536,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,5,powered,0.0977,True,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,6,beans,0.2764,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,7,.,0.3259,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,8,"""",0.6322,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+14,9,We,0.9462,False,0.4270,True,False,"are always change un represented [illegible] beans . "" We"
+15,1,q,0.1828,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,2,shufflers,0.3095,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,3,across,0.0658,True,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,4,any,0.2013,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,5,no,0.7625,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,6,reason,0.8060,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,7,",",0.1829,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,8,also,0.1525,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+15,9,are,0.5703,False,0.3740,True,False,"q [illegible] less [illegible] any no reason , also are"
+16,1,"""",0.5069,False,0.3896,True,False,long - men 's career [illegible] man general
+16,2,long-,0.2896,False,0.3896,True,False,long - men 's career [illegible] man general
+16,3,men's,0.2495,False,0.3896,True,False,long - men 's career [illegible] man general
+16,4,career,0.6979,False,0.3896,True,False,long - men 's career [illegible] man general
+16,5,.,0.4811,False,0.3896,True,False,long - men 's career [illegible] man general
+16,6,Youngman,0.1142,False,0.3896,True,False,long - men 's career [illegible] man general
+16,7,general,0.6463,False,0.3896,True,False,long - men 's career [illegible] man general
+17,1,can,0.2613,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,2,designate,0.3579,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,3,sunlight,0.1589,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,4,to,0.2513,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,5,welfare,0.2472,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,6,the,0.3124,False,0.3716,True,False,can designate sunlight to welfare the growing
+17,7,growing,0.4356,False,0.3716,True,False,can designate sunlight to welfare the growing
+18,1,man,0.7776,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,2,resigns's,0.6491,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,3,seven-to,0.1606,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,4,nambreans,0.2912,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,5,.,0.7362,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,6,"""",0.1580,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+18,7,Germany's,0.8820,False,0.4945,True,False,"man resign s 's seven - [illegible] n am re ans . "" Germany 's"
+19,1,meers,0.2700,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,2,(,0.1370,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,3,beans,0.2678,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,4,over,0.1712,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,5,a,0.1420,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,6,necessary,0.3123,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,7,Pompees,0.2739,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+19,8,!,0.5087,False,0.3549,True,False,me res ( beans over a necessary Pompe es !
+20,1,beginers,0.2125,False,0.4413,True,False,begin res apparent clearer assistance
+20,2,apparent,0.7586,False,0.4413,True,False,begin res apparent clearer assistance
+20,3,clearer,0.1600,False,0.4413,True,False,begin res apparent clearer assistance
+20,4,assistance,0.4765,False,0.4413,True,False,begin res apparent clearer assistance
+21,1,as's,0.6383,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,2,unique,0.1847,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,3,pink-lamps,0.2762,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,4,.,0.4239,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,5,1Newspand,0.5922,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,6,ocean,0.1994,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,7,(,0.3749,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
+21,8,6,0.9418,False,0.4886,True,False,as 's unique pink - l amps . 1 New sp and ocean ( 6
