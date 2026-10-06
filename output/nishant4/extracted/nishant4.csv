@@ -1,0 +1,197 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,a01-003,0.8834,False,0.8834,False,False,a 01 - 003
+2,1,Sentence,0.9996,False,0.9857,False,False,Sent once Database
+2,2,Database,0.9842,False,0.9857,False,False,Sent once Database
+3,1,Sentence,0.9869,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,2,Database,0.9993,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,3,",",0.1519,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,4,e.,0.1906,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,5,i.,0.0967,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,6,i.,0.6035,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,7,ie.,0.5186,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,8,Fig.,0.5390,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,9,Fig.,0.6883,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+3,10,Fig.,0.5746,False,0.5367,True,False,"Sent once Database , e . i [illegible] i . ie . Fig . Fig . Fig"
+4,1,Though,0.9997,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,2,they,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,3,may,0.9999,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,4,gather,0.9994,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,5,some,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,6,Left-wing,0.9998,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,7,support,0.9995,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,8,",",0.9996,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,9,a,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,10,large,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,11,majority,0.9999,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,12,of,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,13,Labour,1.0000,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+4,14,MPs,0.8250,False,0.9499,False,False,"Though they may gather some Left - wing support , a large majority of Labour MPs"
+5,1,are,0.9993,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,2,likely,1.0000,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,3,to,0.9999,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,4,turn,0.9996,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,5,down,1.0000,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,6,the,1.0000,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,7,Foot-Griffiths,0.9989,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,8,resolution,0.9996,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,9,.,0.9962,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,10,Mr.,0.9999,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,11,Foot's,0.9998,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,12,line,0.9998,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,13,will,1.0000,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,14,be,0.9998,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,15,that,0.9999,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+5,16,as,1.0000,False,0.9995,False,False,are likely to turn down the Foot - Gr if its resolution . Mr . Foot 's line will be that as
+6,1,Labour,0.9999,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,2,M.,0.8228,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,3,P.,0.6855,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,4,opposed,0.9844,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,5,the,0.9998,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,6,Government,1.0000,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,7,Bill,0.9997,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,8,which,1.0000,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,9,brought,0.9939,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,10,life,0.9999,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,11,peers,0.9997,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,12,into,1.0000,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,13,existence,0.9999,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+6,14,",",0.9993,False,0.9560,False,False,"Labour M . P . opposed the Government Bill which brought life peers into existence ,"
+7,1,they,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,2,should,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,3,not,1.0000,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,4,now,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,5,put,0.9990,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,6,forward,0.9997,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,7,nominees,0.9998,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,8,.,1.0000,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,9,He,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,10,believes,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,11,that,1.0000,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,12,the,0.9999,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,13,House,1.0000,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,14,of,1.0000,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+7,15,Lords,0.9564,False,0.9829,False,False,they should not now put forward nominees . He believes that the House of Lords
+8,1,0,0.1983,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,2,0,0.2113,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,3,0,0.6464,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,4,0,0.5178,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,5,0,0.5091,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,6,0,0.4644,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,7,0,0.4047,False,0.4519,True,False,0 0 0 0 0 0 0 0
+8,8,0,0.4651,False,0.4519,True,False,0 0 0 0 0 0 0 0
+9,1,should,0.9998,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,2,be,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,3,abolished,0.9955,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,4,and,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,5,that,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,6,Labour,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,7,should,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,8,not,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,9,take,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,10,any,0.9997,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,11,steps,0.9997,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,12,which,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,13,would,0.9996,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+9,14,appear,1.0000,False,0.9996,False,False,should be abolished and that Labour should not take any steps which would appear
+10,1,to,1.0000,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,2,"""",0.9988,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,3,prop,0.9996,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,4,up,0.9998,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,5,"""",0.9875,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,6,an,0.9954,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,7,out-dated,0.9995,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,8,institution,0.9992,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+10,9,.,0.9159,False,0.9641,False,False,"to "" prop up "" an out - dated institution"
+11,1,0,0.7568,False,0.7568,False,False,0
+12,1,Though,0.9834,False,0.9482,False,False,Though they may gather some Left - wing
+12,2,they,1.0000,False,0.9482,False,False,Though they may gather some Left - wing
+12,3,may,0.9976,False,0.9482,False,False,Though they may gather some Left - wing
+12,4,gather,0.9995,False,0.9482,False,False,Though they may gather some Left - wing
+12,5,some,0.9998,False,0.9482,False,False,Though they may gather some Left - wing
+12,6,Left-wing,0.9283,False,0.9482,False,False,Though they may gather some Left - wing
+13,1,1,0.2868,False,0.8931,False,False,1 1
+13,2,1,0.9482,False,0.8931,False,False,1 1
+14,1,support,0.9974,False,0.9923,False,False,"support , a large majority of Labour"
+14,2,",",0.9994,False,0.9923,False,False,"support , a large majority of Labour"
+14,3,a,0.9997,False,0.9923,False,False,"support , a large majority of Labour"
+14,4,large,1.0000,False,0.9923,False,False,"support , a large majority of Labour"
+14,5,majority,1.0000,False,0.9923,False,False,"support , a large majority of Labour"
+14,6,of,0.9999,False,0.9923,False,False,"support , a large majority of Labour"
+14,7,Labour,0.9852,False,0.9923,False,False,"support , a large majority of Labour"
+15,1,MPs,0.9988,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,2,are,0.9988,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,3,likely,0.9997,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,4,to,0.9985,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,5,turn,0.9961,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,6,down,1.0000,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,7,the,0.9996,False,0.9836,False,False,MP s are likely to turn down the Foot -
+15,8,Foot-,0.9533,False,0.9836,False,False,MP s are likely to turn down the Foot -
+16,1,Griffiths,0.9980,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,2,resolution,0.9943,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,3,.,0.9683,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,4,Mr.,0.9999,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,5,Foot's,0.9994,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,6,line,0.9709,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+16,7,will,0.9999,False,0.9938,False,False,Gr if its resolution . Mr . Foot 's line will
+17,1,be,0.9039,False,0.9870,False,False,be that as Labour MPs opposed the
+17,2,that,0.9999,False,0.9870,False,False,be that as Labour MPs opposed the
+17,3,as,0.9991,False,0.9870,False,False,be that as Labour MPs opposed the
+17,4,Labour,0.9997,False,0.9870,False,False,be that as Labour MPs opposed the
+17,5,MPs,0.9888,False,0.9870,False,False,be that as Labour MPs opposed the
+17,6,opposed,0.9999,False,0.9870,False,False,be that as Labour MPs opposed the
+17,7,the,0.9946,False,0.9870,False,False,be that as Labour MPs opposed the
+18,1,Government,0.9999,False,0.9935,False,False,Government Bill which brought life peers
+18,2,Bill,0.9989,False,0.9935,False,False,Government Bill which brought life peers
+18,3,which,0.9997,False,0.9935,False,False,Government Bill which brought life peers
+18,4,brought,0.9896,False,0.9935,False,False,Government Bill which brought life peers
+18,5,life,0.9990,False,0.9935,False,False,Government Bill which brought life peers
+18,6,peers,0.9895,False,0.9935,False,False,Government Bill which brought life peers
+19,1,into,0.9994,False,0.9937,False,False,"into existence , they should not now put"
+19,2,existence,0.9805,False,0.9937,False,False,"into existence , they should not now put"
+19,3,",",0.9998,False,0.9937,False,False,"into existence , they should not now put"
+19,4,they,0.9992,False,0.9937,False,False,"into existence , they should not now put"
+19,5,should,0.9981,False,0.9937,False,False,"into existence , they should not now put"
+19,6,not,1.0000,False,0.9937,False,False,"into existence , they should not now put"
+19,7,now,0.9999,False,0.9937,False,False,"into existence , they should not now put"
+19,8,put,0.9867,False,0.9937,False,False,"into existence , they should not now put"
+20,1,forward,0.9981,False,0.9997,False,False,forward nominees . He believes that the
+20,2,nominees,0.9998,False,0.9997,False,False,forward nominees . He believes that the
+20,3,.,0.9997,False,0.9997,False,False,forward nominees . He believes that the
+20,4,He,0.9996,False,0.9997,False,False,forward nominees . He believes that the
+20,5,believes,0.9999,False,0.9997,False,False,forward nominees . He believes that the
+20,6,that,1.0000,False,0.9997,False,False,forward nominees . He believes that the
+20,7,the,0.9999,False,0.9997,False,False,forward nominees . He believes that the
+21,1,House,0.9996,False,0.9993,False,False,House of Lords should be abolished and
+21,2,of,1.0000,False,0.9993,False,False,House of Lords should be abolished and
+21,3,Lords,0.9988,False,0.9993,False,False,House of Lords should be abolished and
+21,4,should,0.9960,False,0.9993,False,False,House of Lords should be abolished and
+21,5,be,1.0000,False,0.9993,False,False,House of Lords should be abolished and
+21,6,abolished,0.9982,False,0.9993,False,False,House of Lords should be abolished and
+21,7,and,0.9998,False,0.9993,False,False,House of Lords should be abolished and
+22,1,that,0.9953,False,0.9677,False,False,that Labour should not take any steps
+22,2,Labour,0.9999,False,0.9677,False,False,that Labour should not take any steps
+22,3,should,0.9998,False,0.9677,False,False,that Labour should not take any steps
+22,4,not,1.0000,False,0.9677,False,False,that Labour should not take any steps
+22,5,take,1.0000,False,0.9677,False,False,that Labour should not take any steps
+22,6,any,0.9990,False,0.9677,False,False,that Labour should not take any steps
+22,7,steps,0.9365,False,0.9677,False,False,that Labour should not take any steps
+23,1,y,0.8238,False,0.8238,False,False,y
+24,1,which,0.9972,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,2,would,0.9935,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,3,appear,0.9999,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,4,to,0.9836,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,5,"""",0.8788,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,6,prop,0.9813,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,7,up,0.9842,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,8,"""",0.9810,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,9,an,0.8854,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+24,10,out-,0.9156,False,0.9526,False,False,"which would appear to "" prop up "" an out -"
+25,1,MPC,0.0933,False,0.3564,True,False,M PC J PL
+25,2,JPL,0.4880,False,0.3564,True,False,M PC J PL
+26,1,0,0.2958,False,0.5879,True,False,0 0
+26,2,0,0.6463,False,0.5879,True,False,0 0
+27,1,0,0.8477,False,0.8477,False,False,0
+28,1,name,0.4518,False,0.7525,False,False,name :
+28,2,:,0.8126,False,0.7525,False,False,name :
+29,1,1962,0.0800,False,0.4783,True,False,19 [illegible] 63
+29,2,63,0.8766,False,0.4783,True,False,19 [illegible] 63

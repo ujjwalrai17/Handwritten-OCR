@@ -1,0 +1,110 @@
+line_id,word_id,word,word_confidence,word_low_conf,line_confidence,line_low_confidence,hallucination_risk,line_text
+1,1,a01-000,0.9574,False,0.9574,False,False,a 01 - 000
+2,1,Sentence,0.9996,False,0.9783,False,False,Sent once Database
+2,2,Database,0.9760,False,0.9783,False,False,Sent once Database
+3,1,0,0.2731,False,0.8889,False,False,0 0
+3,2,0,0.9197,False,0.8889,False,False,0 0
+4,1,A,0.9902,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,2,MOVE,0.9928,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,3,to,0.9999,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,4,stop,0.9957,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,5,Mr.,0.9992,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,6,Gaitskell,0.9997,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,7,from,1.0000,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,8,nominating,0.9990,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,9,any,0.9978,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,10,more,0.9998,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,11,Labour,1.0000,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,12,life,1.0000,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,13,Peers,0.9996,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,14,is,1.0000,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+4,15,to,0.9998,False,0.9983,False,False,A MO VE to stop Mr . Ga its well from nominating any more Labour life Pe res is to
+5,1,be,0.9996,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,2,made,1.0000,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,3,at,0.9999,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,4,a,1.0000,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,5,meeting,1.0000,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,6,of,1.0000,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,7,Labour,1.0000,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,8,.,0.7803,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,9,MPs,0.5348,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,10,tomorrow,0.9929,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,11,.,0.4662,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,12,Mr.,0.9994,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,13,Michael,0.9997,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,14,Foot,0.9724,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,15,has,0.9950,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,16,put,0.9998,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+5,17,down,0.9948,False,0.9459,False,False,be made at a meeting of Labour . MPs tomorrow . Mr . Michael Foot has put down
+6,1,assolution,0.3998,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,2,that,0.0957,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,3,he,0.0726,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,4,is,1.0000,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,5,to,0.9529,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,6,be,0.9922,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,7,backed,0.9975,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,8,by,1.0000,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,9,Mr.,0.9998,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,10,Will,0.9953,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,11,Griffiths,0.9906,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,12,",",0.9959,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,13,M,0.9912,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,14,P,0.6998,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+6,15,for,0.9856,False,0.8530,False,False,"ass solution that he is to be backed by Mr . Will Griffith s , M P for"
+7,1,transportation,0.2490,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+7,2,in,0.1260,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+7,3,Washington,0.1176,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+7,4,D,0.7935,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+7,5,C.C.,0.3209,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+7,6,Pennsylvania,0.3404,False,0.3302,True,False,trans portion in Washington D C . C [illegible]
+8,1,A,0.9480,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,2,MOVE,0.9935,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,3,to,0.9986,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,4,stop,0.9943,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,5,Mr.,0.9993,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,6,Gaitskell,0.9999,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+8,7,from,0.6366,False,0.7849,False,False,A MO VE to stop Mr . Ga its well from
+9,1,nominating,0.9994,False,0.9871,False,False,nom rating any more Labour life Pe res
+9,2,any,0.9992,False,0.9871,False,False,nom rating any more Labour life Pe res
+9,3,more,0.9990,False,0.9871,False,False,nom rating any more Labour life Pe res
+9,4,Labour,0.9991,False,0.9871,False,False,nom rating any more Labour life Pe res
+9,5,life,0.9992,False,0.9871,False,False,nom rating any more Labour life Pe res
+9,6,Peers,0.9725,False,0.9871,False,False,nom rating any more Labour life Pe res
+10,1,is,0.9999,False,0.9952,False,False,is to be made at a meeting of Labour
+10,2,to,0.9992,False,0.9952,False,False,is to be made at a meeting of Labour
+10,3,be,0.9999,False,0.9952,False,False,is to be made at a meeting of Labour
+10,4,made,1.0000,False,0.9952,False,False,is to be made at a meeting of Labour
+10,5,at,0.9987,False,0.9952,False,False,is to be made at a meeting of Labour
+10,6,a,0.9997,False,0.9952,False,False,is to be made at a meeting of Labour
+10,7,meeting,1.0000,False,0.9952,False,False,is to be made at a meeting of Labour
+10,8,of,0.9999,False,0.9952,False,False,is to be made at a meeting of Labour
+10,9,Labour,0.9833,False,0.9952,False,False,is to be made at a meeting of Labour
+11,1,MPs,0.6818,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,2,tomorrow,0.9837,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,3,.,0.9810,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,4,Mr.,0.9988,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,5,Michael,0.9993,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,6,Foot,0.9980,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+11,7,has,0.9854,False,0.9345,False,False,MP s tomorrow . Mr . Michael Foot has
+12,1,put,0.9985,False,0.9232,False,False,put down a resolution on the subject
+12,2,down,0.9997,False,0.9232,False,False,put down a resolution on the subject
+12,3,a,1.0000,False,0.9232,False,False,put down a resolution on the subject
+12,4,resolution,0.9994,False,0.9232,False,False,put down a resolution on the subject
+12,5,on,0.9961,False,0.9232,False,False,put down a resolution on the subject
+12,6,the,0.9998,False,0.9232,False,False,put down a resolution on the subject
+12,7,subject,0.8324,False,0.9232,False,False,put down a resolution on the subject
+13,1,and,0.9960,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,2,he,0.9973,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,3,is,0.9930,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,4,to,0.9636,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,5,be,1.0000,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,6,backed,0.9893,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,7,by,1.0000,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,8,Mr.,0.9998,False,0.9918,False,False,and he is to be backed by Mr . Will
+13,9,Will,0.9877,False,0.9918,False,False,and he is to be backed by Mr . Will
+14,1,Griffiths,0.9967,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
+14,2,",",1.0000,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
+14,3,MP,0.9703,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
+14,4,for,0.9991,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
+14,5,Manchester,1.0000,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
+14,6,Exchange,0.9976,False,0.9956,False,False,"Gr if its , MP for Manchester Exchange"
