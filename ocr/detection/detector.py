@@ -199,6 +199,11 @@ def _run_craft(bgr: np.ndarray, candidate_boxes: list) -> tuple:
         region_bgr = bgr[ry1:ry2, rx1:rx2]
         if region_bgr.size == 0:
             continue
+        # CRAFT has 4 max-pool layers (2x each) → needs at least 32x32
+        if region_bgr.shape[0] < 32 or region_bgr.shape[1] < 32:
+            log.debug("CRAFT: skipping tiny region %dx%d", region_bgr.shape[1], region_bgr.shape[0])
+            refined_boxes.append((rx1, ry1, rx2, ry2))
+            continue
 
         rh, rw = region_bgr.shape[:2]
 
